@@ -5,7 +5,7 @@ Author: Zijie Jiang
 
 Email: [jzjlab@163.com](mailto:jzjlab@163.com)
 
-
+​	 
 
 ## Hi-C Interaction Ratio
 
@@ -13,7 +13,7 @@ Email: [jzjlab@163.com](mailto:jzjlab@163.com)
 
 The Hi-C interaction ratio is computed in three main steps. First, the whole genome interaction matrix is extracted from the input file, which can be provided in either dense (.hic) or sparse (.bed) format. This matrix serves as the basis for subsequent calculations. In the second step, the whole genome matrix is divided into submatrices according to the user-specified resolution and window size to facilitate localized counting. In the final step, two metrics are calculated using predefined formulas: the Hi-C signal ratio and the Hi-C intra/inter ratio. 
 
- 
+ 	 
 
 ### 1. Preprocessing
 
@@ -61,7 +61,7 @@ Nots:
 - The `bin_size` used in this article were 100kb, 500kb, and 2.5Mb. It is recommended to calculate at multiple resolutions (here use 500kb for example).
 - `bin_windows` is used to specify the number of bin extensions on both sides of the matrix (here use 50 for example). 
 
- 
+ 	 
 
 ### 3. Hi-C intra/inter ratio
 
@@ -85,19 +85,19 @@ Nots:
 
 The `cal_hic_signal_ratio.py` and `cal_hic_intra_intre_ratio.py` calculation scripts are available in this repository. 
 
-
+​	 
 
 ## Simulation
 
 Details regarding the data simulation can be found in [simulation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/simulation/simulation.md). 
 
- 
+ 	 
 
 ## Evaluation
 
 Details regarding the performance evaluation can be found in [evaluation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/evaluation/evaluation.md). 
 
-
+​	 
 
 ## Citations
 
@@ -106,7 +106,7 @@ Details regarding the performance evaluation can be found in [evaluation](https:
 ```
 ```
 
-
+​	 
 
 ## License
 
