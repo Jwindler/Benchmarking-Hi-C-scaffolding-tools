@@ -1,5 +1,9 @@
 # Benchmarking-Hi-C-scaffolding-tools
-This repository primarily contains scripts and computational code used to calculate Hi-C interaction ratios and to perform data simulation, evaluation, and processing, as described in the manuscript.
+This repository primarily contains scripts and computational code used to calculate Hi-C interaction ratios and to perform data simulation, evaluation, and processing, as described in the manuscript.  
+
+Author: Zijie Jiang
+
+Email: [jzjlab@163.com](mailto:jzjlab@163.com)
 
 
 
@@ -7,9 +11,9 @@ This repository primarily contains scripts and computational code used to calcul
 
 ![Schematic diagram illustrating the calculation of the Hi-C interaction ratio.](https://s2.loli.net/2025/12/11/kmlBxdTDGyMfz7L.png)
 
-The Hi-C interaction ratio is computed in three main steps. First, the whole genome interaction matrix is extracted from the input file, which can be provided in either dense (.hic) or sparse (.bed) format. This matrix serves as the basis for subsequent calculations. In the second step, the whole genome matrix is divided into submatrices according to the user-specified resolution and window size to facilitate localized counting. In the final step, two metrics are calculated using predefined formulas: the Hi-C signal ratio and the Hi-C intra/inter ratio.
+The Hi-C interaction ratio is computed in three main steps. First, the whole genome interaction matrix is extracted from the input file, which can be provided in either dense (.hic) or sparse (.bed) format. This matrix serves as the basis for subsequent calculations. In the second step, the whole genome matrix is divided into submatrices according to the user-specified resolution and window size to facilitate localized counting. In the final step, two metrics are calculated using predefined formulas: the Hi-C signal ratio and the Hi-C intra/inter ratio. 
 
-
+ 
 
 ### 1. Preprocessing
 
@@ -33,13 +37,13 @@ Nots:
 
 - The `.hic` file is generated from the scaffolding results; please refer to the respective scaffolders' tutorials for more information.
 
-- The `resolution` used in this article were 100kb, 500kb, and 2.5Mb. Higher resolutions require more time to extract the matrix and calculate the Hi-C interaction ratio.  It is recommended to calculate the Hi-C interaction ratio at multiple resolutions (here use 500kb for example).
+- The `resolution` used in this article were 100kb, 500kb, and 2.5Mb. Higher resolutions require more time to extract the matrix and calculate the Hi-C interaction ratio.  It is recommended to calculate the Hi-C interaction ratio at multiple resolutions (here use 500kb for example). 
 
-      
+  ​     
 
 ### 2. Hi-C signal ratio
 
-The Hi-C signal ratio is defined as the ratio of interaction strength within the diagonal regions of the whole genome matrix to the background (off-diagonal) interaction strength. A high ratio indicates strong self-interaction of correctly assembled scaffolds. Mis-assemblies cause spurious long-range interactions in the background region, thereby lowering the ratio.
+The Hi-C signal ratio is defined as the ratio of interaction strength within the diagonal regions of the whole genome matrix to the background (off-diagonal) interaction strength. A high ratio indicates strong self-interaction of correctly assembled scaffolds. Mis-assemblies cause spurious long-range interactions in the background region, thereby lowering the ratio. 
 
 ```sh
 matrix=sample_scaffolderr_500K.txt
@@ -55,9 +59,9 @@ Nots:
 
 - `matrix` from the preceding preprocessing step.
 - The `bin_size` used in this article were 100kb, 500kb, and 2.5Mb. It is recommended to calculate at multiple resolutions (here use 500kb for example).
-- `bin_windows` is used to specify the number of bin extensions on both sides of the matrix (here use 50 for example).
+- `bin_windows` is used to specify the number of bin extensions on both sides of the matrix (here use 50 for example). 
 
-
+ 
 
 ### 3. Hi-C intra/inter ratio
 
@@ -79,12 +83,31 @@ Nots:
 - `chrom_lengths_file` contains the lengths of each sequence in the scaffolds (format: name /t length).
 - The `bin_size` used in this article were 100kb, 500kb, and 2.5Mb. It is recommended to calculate at multiple resolutions (here use 500kb for example).
 
-The `cal_hic_signal_ratio.py` and `cal_hic_intra_intre_ratio.py` calculation scripts are available in this repository .
+The `cal_hic_signal_ratio.py` and `cal_hic_intra_intre_ratio.py` calculation scripts are available in this repository. 
 
 
 
 ## Simulation
 
+Details regarding the data simulation can be found in [simulation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/simulation/simulation.md). 
 
+ 
 
 ## Evaluation
+
+Details regarding the performance evaluation can be found in [evaluation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/evaluation/evaluation.md). 
+
+
+
+## Citations
+
+**If you used** `Hi-C Interaction Ratio` **in your research, please cite us:**
+
+```
+```
+
+
+
+## License
+
+This software is distributed under the `GNU General Public License v3.0`.
