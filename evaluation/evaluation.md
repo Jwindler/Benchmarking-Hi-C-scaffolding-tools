@@ -1,6 +1,23 @@
 # Performance evaluation
 
+ 	
 
+​	 		
+
+## Content
+
+
+- [Performance evaluation](#performance-evaluation)
+  - [Contiguity](#contiguity)
+  - [Accuracy](#accuracy)
+    - [Preprocessing](#preprocessing)
+    - [filter](#filter)
+    - [calculate accuracy](#calculate-accuracy)
+  - [Chromosome assignment](#chromosome-assignment)
+
+​	 
+
+​	   
 
 ## Contiguity
 
@@ -20,7 +37,9 @@ output=results
 quast.py $scaffolds -r $reference --threads $threads -o $output
 ```
 
+​	 
 
+ 	
 
 ## Accuracy
 
@@ -28,7 +47,9 @@ The process for calculating the accuracy of scaffolding using simulation data is
 
 Briefly, scaffolds were aligned to both the T2T reference genome and the original contig-level assembly using nucmer (MUMmer4, version: 4.0.1). The resulting .delta files were converted to tabular coordinates with show-coords. Then filtered alignments and computed statistics. 
 
+​	 
 
+​	 
 
 ### Preprocessing
 
@@ -52,7 +73,9 @@ nucmer --threads $threads -p scaffold_ref $reference $scaffold
 show-coords -rcl scaffold_ref.delta > scaffold_ref.coords
 ```
 
+​	 
 
+​	 
 
 ### filter
 
@@ -64,7 +87,9 @@ filtered_coords_file=conitg_scaffold_filtered.txt
 python3 filter_coords.py $coords_file $filtered_coords_file
 ```
 
+​	 
 
+​	 
 
 ### calculate accuracy
 
@@ -90,7 +115,10 @@ python3 cal_scaffold_accuracy.py $reference_genome $contig_scaffold $scaffold_re
     - order.txt: the accuracy rate of the successful order in the scaffold.
     - orientation.txt: the accuracy rate of the successful orientation in the scaffold.
 
-    
+
+​	 
+
+​	   
 
 ## Chromosome assignment
 

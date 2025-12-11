@@ -7,6 +7,25 @@ Email: [jzjlab@163.com](mailto:jzjlab@163.com)
 
 ​	 
 
+​	 
+
+## Content
+
+- [Benchmarking-Hi-C-scaffolding-tools](#benchmarking-hi-c-scaffolding-tools)
+  - [Hi-C Interaction Ratio](#hi-c-interaction-ratio)
+    - [1. Preprocessing](#1-preprocessing)
+    - [2. Hi-C signal ratio](#2-hi-c-signal-ratio)
+    - [3. Hi-C intra/inter ratio](#3-hi-c-intrainter-ratio)
+  - [Simulation](#simulation)
+  - [Evaluation](#evaluation)
+  - [Citations](#citations)
+  - [License](#license)
+  
+        
+  
+      ​	   
+
+
 ## Hi-C Interaction Ratio
 
 ![Schematic diagram illustrating the calculation of the Hi-C interaction ratio.](https://s2.loli.net/2025/12/11/kmlBxdTDGyMfz7L.png)
@@ -14,6 +33,8 @@ Email: [jzjlab@163.com](mailto:jzjlab@163.com)
 The Hi-C interaction ratio is computed in three main steps. First, the whole genome interaction matrix is extracted from the input file, which can be provided in either dense (.hic) or sparse (.bed) format. This matrix serves as the basis for subsequent calculations. In the second step, the whole genome matrix is divided into submatrices according to the user-specified resolution and window size to facilitate localized counting. In the final step, two metrics are calculated using predefined formulas: the Hi-C signal ratio and the Hi-C intra/inter ratio. 
 
  	 
+
+​	 
 
 ### 1. Preprocessing
 
@@ -63,6 +84,8 @@ Nots:
 
  	 
 
+ 	
+
 ### 3. Hi-C intra/inter ratio
 
 The Hi-C intra/inter ratio is the ratio of total intra-chromosomal interactions to inter-chromosomal interactions in the whole genome matrix. Because Hi-C signals reflect spatial proximity, properly scaffolded chromosomes exhibit markedly higher intra-chromosomal than inter-chromosomal contact frequencies. Consequently, higher accuracy in clustering, ordering, and orientation of scaffolds results in a higher intra/inter ratio.
@@ -92,6 +115,8 @@ The `cal_hic_signal_ratio.py` and `cal_hic_intra_intre_ratio.py` calculation scr
 Details regarding the data simulation can be found in [simulation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/simulation/simulation.md). 
 
  	 
+
+​	  
 
 ## Evaluation
 
