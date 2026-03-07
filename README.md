@@ -21,14 +21,13 @@ Email: [jzjlab@163.com](mailto:jzjlab@163.com)
   - [Citations](#citations)
   - [License](#license)
   
-        
+    ​    
   
       ​	   
 
-
 ## Hi-C Interaction Ratio
 
-![Schematic diagram illustrating the calculation of the Hi-C interaction ratio.](https://s2.loli.net/2025/12/11/kmlBxdTDGyMfz7L.png)
+![Schematic diagram illustrating the calculation of the Hi-C interaction ratio](https://files.seeusercontent.com/2026/03/07/qGf4/image-20260307170454966.png)
 
 The Hi-C interaction ratio is computed in three main steps. First, the whole genome interaction matrix is extracted from the input file, which can be provided in either dense (.hic) or sparse (.bed) format. This matrix serves as the basis for subsequent calculations. In the second step, the whole genome matrix is divided into submatrices according to the user-specified resolution and window size to facilitate localized counting. In the final step, two metrics are calculated using predefined formulas: the Hi-C signal ratio and the Hi-C intra/inter ratio. 
 
