@@ -3,7 +3,7 @@ This repository primarily contains scripts and computational code used to calcul
 
 Author: Zijie Jiang
 
-Email: [jzjlab@163.com](mailto:jzjlab@163.com)
+Email: [jiangzijie@sjtu.edu.cn](mailto:jiangzijie@sjtu.edu.cn)
 
 ​	 
 
