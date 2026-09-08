@@ -50,7 +50,7 @@ def main():
 
     with open(output_file, 'w') as f:
         for key, value in scaffold_info_new.items():
-            line = f"{key} {value}\n"
+            line = f"{key}\t{value}\n"
             f.write(line)
 
 
