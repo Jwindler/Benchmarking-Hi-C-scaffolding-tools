@@ -1,21 +1,26 @@
 # Performance evaluation
 
- 	
+Performance evaluation consists of two parts: evaluation of simulated data and evaluation of real data.	
 
 ​	 		
 
 ## Content
-
-
 - [Performance evaluation](#performance-evaluation)
+  - [Content](#content)
   - [Contiguity](#contiguity)
+  - [Completeness](#completeness)
+    - [BUSCO](#busco)
+    - [Coverage rate](#coverage-rate)
   - [Accuracy](#accuracy)
-    - [Preprocessing](#preprocessing)
-    - [filter](#filter)
-    - [calculate accuracy](#calculate-accuracy)
+    - [simulation](#simulation)
+    - [QV](#qv)
+    - [AQI](#aqi)
+    - [HSI](#hsi)
   - [Chromosome assignment](#chromosome-assignment)
 
-​	 
+
+
+
 
 ​	   
 
@@ -37,21 +42,37 @@ output=results
 quast.py $scaffolds -r $reference --threads $threads -o $output
 ```
 
-​	 
 
- 	
+
+## Completeness
+
+### BUSCO
+
+```sh
+busco -i <genome_dir> -m genome --auto-lineage-euk -o output
+```
+
+
+
+### Coverage rate
+
+The assembly coverage rate is obtained from the calculation of the AQI.
+
+
+
+
 
 ## Accuracy
+
+### simulation 
 
 The process for calculating the accuracy of scaffolding using simulation data is as follows:
 
 Briefly, scaffolds were aligned to both the T2T reference genome and the original contig-level assembly using nucmer (MUMmer4, version: 4.0.1). The resulting .delta files were converted to tabular coordinates with show-coords. Then filtered alignments and computed statistics. 
 
-​	 
+​	 	 
 
-​	 
-
-### Preprocessing
+- Preprocessing
 
 ```sh
 threads=40
@@ -77,7 +98,7 @@ show-coords -rcl scaffold_ref.delta > scaffold_ref.coords
 
 ​	 
 
-### filter
+- filter
 
 ```sh
 coords_file=conitg_scaffold.coords
@@ -91,7 +112,7 @@ python3 filter_coords.py $coords_file $filtered_coords_file
 
 ​	 
 
-### calculate accuracy
+- calculate accuracy
 
 ```sh
  # genome fasta file
@@ -116,7 +137,40 @@ python3 cal_scaffold_accuracy.py $reference_genome $contig_scaffold $scaffold_re
     - orientation.txt: the accuracy rate of the successful orientation in the scaffold.
 
 
+
+### QV
+
+```sh
+bash best_k.sh <genome_size>
+
+meryl count k=<k-mer> *.fastq.gz output <genome.meryl>
+```
+
+
+
+### AQI
+
+```sh
+minimap2 -ax map-hifi <genome> *.fastq.gz > aligned.sam 
+
+samtools view -bS aligned.sam > aligned.bam
+
+samtools sort -o aligned.sorted.bam aligned.bam
+
+samtools index aligned.sorted.bam
+
+craq -g <genome> -sms aligned.sorted.bam --output_dir output
+```
+
 ​	 
+
+### HSI
+
+```sh
+python3 hsi.py <matrix_file> <chrom_lengths_file> <bin_size> <outdir>
+```
+
+
 
 ​	   
 

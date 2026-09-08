@@ -1,5 +1,5 @@
-# Benchmarking-Hi-C-scaffolding-tools
-This repository primarily contains scripts and computational code used to calculate Hi-C interaction ratios and to perform data simulation, evaluation, and processing, as described in the manuscript.  
+# Benchmarking Hi-C-based scaffolding tools
+This repository primarily contains scripts and computational code used to calculate `Hi-C scaffolding index` and to perform data **simulation, scaffolding, evaluation**, and processing, as described in the manuscript.  
 
 Author: Zijie Jiang
 
@@ -11,25 +11,29 @@ Email: [jiangzijie@sjtu.edu.cn](mailto:jiangzijie@sjtu.edu.cn)
 
 ## Content
 
-- [Benchmarking-Hi-C-scaffolding-tools](#benchmarking-hi-c-scaffolding-tools)
-  - [Hi-C Interaction Ratio](#hi-c-interaction-ratio)
+- [Benchmarking Hi-C-based scaffolding tools](#benchmarking-hi-c-based-scaffolding-tools)
+  - [Content](#content)
+  - [Hi-C scaffolding index](#hi-c-scaffolding-index)
     - [1. Preprocessing](#1-preprocessing)
-    - [2. Hi-C signal ratio](#2-hi-c-signal-ratio)
-    - [3. Hi-C intra/inter ratio](#3-hi-c-intrainter-ratio)
+    - [2. Hi-C scaffolding index](#2-hi-c-scaffolding-index)
+    - [3. plot index plot](#3-plot-index-plot)
   - [Simulation](#simulation)
+  - [Scaffolding](#scaffolding)
   - [Evaluation](#evaluation)
   - [Citations](#citations)
   - [License](#license)
+
+
+
   
-    ​    
-  
-      ​	   
 
-## Hi-C Interaction Ratio
+## Hi-C scaffolding index
 
-![Schematic diagram illustrating the calculation of the Hi-C interaction ratio](https://files.seeusercontent.com/2026/03/07/qGf4/image-20260307170454966.png)
+![](./HSI/pipeline.png)
 
-The Hi-C interaction ratio is computed in three main steps. First, the whole genome interaction matrix is extracted from the input file, which can be provided in either dense (.hic) or sparse (.bed) format. This matrix serves as the basis for subsequent calculations. In the second step, the whole genome matrix is divided into submatrices according to the user-specified resolution and window size to facilitate localized counting. In the final step, two metrics are calculated using predefined formulas: the Hi-C signal ratio and the Hi-C intra/inter ratio. 
+
+
+`HSI` is defined as the ratio of cis- to trans-interactions across the whole-genome interaction matrix and is computed in three main steps. First, the whole-genome interaction matrix is extracted from the input file, which can be provided in either dense (.hic) or sparse (.bed) format. This matrix serves as the basis for subsequent calculations. Second, the matrix is partitioned into submatrices according to the user-specified resolution and scaffold size to facilitate localized counting. Finally, the `HSI` is calculated using predefined formulas 
 
  	 
 
@@ -61,42 +65,10 @@ Nots:
 
   ​     
 
-### 2. Hi-C signal ratio
-
-The Hi-C signal ratio is defined as the ratio of interaction strength within the diagonal regions of the whole genome matrix to the background (off-diagonal) interaction strength. A high ratio indicates strong self-interaction of correctly assembled scaffolds. Mis-assemblies cause spurious long-range interactions in the background region, thereby lowering the ratio. 
+### 2. Hi-C scaffolding index
 
 ```sh
-matrix=sample_scaffolderr_500K.txt
-
-bin_size=500000
-
-bin_windows=50
-
-python3 cal_hic_signal_ratio.py $matrix $bin_size $bin_windows
-```
-
-Nots:
-
-- `matrix` from the preceding preprocessing step.
-- The `bin_size` used in this article were 100kb, 500kb, and 2.5Mb. It is recommended to calculate at multiple resolutions (here use 500kb for example).
-- `bin_windows` is used to specify the number of bin extensions on both sides of the matrix (here use 50 for example). 
-
- 	 
-
- 	
-
-### 3. Hi-C intra/inter ratio
-
-The Hi-C intra/inter ratio is the ratio of total intra-chromosomal interactions to inter-chromosomal interactions in the whole genome matrix. Because Hi-C signals reflect spatial proximity, properly scaffolded chromosomes exhibit markedly higher intra-chromosomal than inter-chromosomal contact frequencies. Consequently, higher accuracy in clustering, ordering, and orientation of scaffolds results in a higher intra/inter ratio.
-
-```sh
-matrix=sample_scaffolderr_500K.txt
-
-chrom_lengths_file=
-
-bin_size=500000
-
-python3 cal_hic_intra_intre_ratio.py $matrix $chrom_lengths_file $bin_size
+python3 ./HSI/hsi.py <matrix_file> <chrom_lengths_file> <bin_size> <outdir>
 ```
 
 Nots:
@@ -105,27 +77,43 @@ Nots:
 - `chrom_lengths_file` contains the lengths of each sequence in the scaffolds (format: name /t length).
 - The `bin_size` used in this article were 100kb, 500kb, and 2.5Mb. It is recommended to calculate at multiple resolutions (here use 500kb for example).
 
-The `cal_hic_signal_ratio.py` and `cal_hic_intra_intre_ratio.py` calculation scripts are available in this repository. 
 
-​	 
+
+### 3. plot index plot
+
+Visualizing the index curve for each scaffold allows for the identification of potential intra-scaffold misassemblies.
+
+```sh
+python ./HSI/plot_index.py <index.txt> <outdir>
+```
+
+Nots:
+
+- `index.txt` from calculate Hi-C scaffolding index step.
+
+
 
 ## Simulation
 
-Details regarding the data simulation can be found in [simulation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/simulation/simulation.md). 
+Details regarding the data simulation can be found in [simulation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/1.simulation/simulation.md). 
 
  	 
+
+## Scaffolding
+
+Details regarding the scaffolding can be found in [scaffolding](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/tree/main/2.scaffolding/scaffolding.md). 
 
 ​	  
 
 ## Evaluation
 
-Details regarding the performance evaluation can be found in [evaluation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/evaluation/evaluation.md). 
+Details regarding the performance evaluation can be found in [evaluation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/3.evaluation/evaluation.md). 
 
 ​	 
 
 ## Citations
 
-**If you used** `Hi-C Interaction Ratio` **in your research, please cite us:**
+**If you used** `Hi-C scaffolding index` **in your research, please cite us:**
 
 ```
 ```

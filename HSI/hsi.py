@@ -4,11 +4,11 @@
 """
 @Author: Zijie Jiang
 @Contact: jzjlab@163.com
-@File: hic_signal_index.py
+@File: hsi.py
 @Time: 2026/8/18 10:02
 @Function:
 """
-import os.path
+import os
 
 import pandas as pd
 
@@ -104,7 +104,8 @@ def cal_index(matrix_file, len_file, bin_size, index_output, inter_index_output,
 			'region': inner_contact.index,
 			'inner-contact': inner_contact.values,
 			'Scaffold': scaffold,
-			'index': inter / inner_contact.values  # FIXME: RuntimeWarning: divide by zero encountered in divide
+			'index': inter / inner_contact.values
+			# FIXME: RuntimeWarning: divide by zero encountered in divide
 		})
 
 		inner_list.append(col_sums)
@@ -158,38 +159,34 @@ def cal_index(matrix_file, len_file, bin_size, index_output, inter_index_output,
 
 
 def main():
-	species = "Ok"
+	if len(sys.argv) != 4:
+		print(
+			"Usage: python hsi.py <matrix_file> <chrom_lengths_file> <bin_size> <outdir>\n")
+		print("Recommended bin_size: 500000")
+		sys.exit(1)
 
-	outdir = "/home/jzj/downloads/" + species
+	matrix_file = sys.argv[1]
+	print(f"Processing file: {matrix_file}\n")
 
-	bin_size = 500000
+	chrom_lengths_file = sys.argv[2]
+	print(f"Using chromosome lengths file: {chrom_lengths_file}\n")
 
-	samples = ["3D-DNA", "HapHiC", "Pin_hic", "SALSA2", "YaHS"]
+	bin_size = int(sys.argv[3])
+	print(f"Using bin size: {bin_size}\n")
 
-	from HSI.plot_index import plot_index
+	outdir = sys.argv[4]
+	print(f"Using output directory: {outdir}\n")
 
-	for sample in samples:
-		# hic matrix file
-		matrix_file = os.path.join(outdir, f"{species}_{sample}-500K.txt")
+	index_output = os.path.join(outdir, f"{sample}-index.txt")
 
-		# assembly length file
-		len_file = os.path.join(outdir, f"{sample}.scaffold_len.txt")
+	inter_index_output = os.path.join(outdir, f"{sample}-inter-index.txt")
 
-		index_output = os.path.join(outdir, f"{sample}-index.txt")
+	inner_index_output = os.path.join(outdir, f"{sample}-inner-index.txt")
 
-		inter_index_output = os.path.join(outdir, f"{sample}-inter-index.txt")
+	cal_index(matrix_file, chrom_lengths_file, bin_size, index_output, inter_index_output,
+	          inner_index_output)
 
-		inner_index_output = os.path.join(outdir, f"{sample}-inner-index.txt")
-
-		cal_index(matrix_file, len_file, bin_size, index_output, inter_index_output,
-		          inner_index_output)
-
-		# plot index
-		output_dir = os.path.join(outdir, f"{sample}-inter-plots")
-		plot_index(inter_index_output, output_dir)
-
-		output_dir = os.path.join(outdir, f"{sample}-inner-plots")
-		plot_index(inner_index_output, output_dir, inner=True)
+	print(f"Finished processing file: {matrix_file}\n")
 
 
 if __name__ == "__main__":

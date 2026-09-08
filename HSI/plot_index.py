@@ -55,11 +55,18 @@ def plot_index(input, outdir, inner=False):
 
 
 def main():
-	input_file = "/home/jzj/downloads/Fig6-example/Ok/500k/Pin_hic-inter-index.txt"
+	if len(sys.argv) != 2:
+		print(
+			"Usage: python plot_index.py <index.txt> <outdir>\n")
+		sys.exit(1)
 
-	output_dir = "/home/jzj/downloads/output_plots"
+	index_file = sys.argv[1]
+	print(f"Processing file: {index_file}\n")
 
-	plot_index(input_file, output_dir)
+	outdir = sys.argv[2]
+	print(f"Using output directory: {outdir}\n")
+
+	plot_index(index_file, outdir)
 
 
 if __name__ == '__main__':
