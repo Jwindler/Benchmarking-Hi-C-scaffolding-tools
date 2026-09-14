@@ -2,8 +2,6 @@
 
 To investigate the factors that may influence scaffolder performance, we conducted a series of simulations varying contig assembly contig N50, coefficient of variation in contig length (CV), proportion of chimeric contigs, and Hi-C sequencing depth.
 
-​	 
-
 ​	   
 
 ## Content
@@ -14,9 +12,7 @@ To investigate the factors that may influence scaffolder performance, we conduct
   - [Chimeric](#chimeric)
   - [Hi-C depth](#hi-c-depth)
 
-​	   
 
-​	  
 
 ## N50
 

@@ -42,6 +42,8 @@ output=results
 quast.py $scaffolds -r $reference --threads $threads -o $output
 ```
 
+​    
+
 
 
 ## Completeness
@@ -52,13 +54,15 @@ quast.py $scaffolds -r $reference --threads $threads -o $output
 busco -i <genome_dir> -m genome --auto-lineage-euk -o output
 ```
 
+​    
+
 
 
 ### Coverage rate
 
 The assembly coverage rate is obtained from the calculation of the AQI.
 
-
+​    
 
 
 
@@ -94,9 +98,7 @@ nucmer --threads $threads -p scaffold_ref $reference $scaffold
 show-coords -rcl scaffold_ref.delta > scaffold_ref.coords
 ```
 
-​	 
-
-​	 
+​	
 
 - filter
 
@@ -107,8 +109,6 @@ filtered_coords_file=conitg_scaffold_filtered.txt
 
 python3 filter_coords.py $coords_file $filtered_coords_file
 ```
-
-​	 
 
 ​	 
 
@@ -136,6 +136,8 @@ python3 cal_scaffold_accuracy.py $reference_genome $contig_scaffold $scaffold_re
     - order.txt: the accuracy rate of the successful order in the scaffold.
     - orientation.txt: the accuracy rate of the successful orientation in the scaffold.
 
+​    
+
 
 
 ### QV
@@ -145,6 +147,8 @@ bash best_k.sh <genome_size>
 
 meryl count k=<k-mer> *.fastq.gz output <genome.meryl>
 ```
+
+​    
 
 
 

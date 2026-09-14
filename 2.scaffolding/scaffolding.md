@@ -2,6 +2,8 @@
 
 The configuration files for building the scaffolder runtime environment are already in the current directory. The preparation process for all scaffolder input files and the commands for running them are as follows:
 
+​    
+
 
 
 ## Content
@@ -17,12 +19,12 @@ The configuration files for building the scaffolder runtime environment are alre
   - [SALSA2](#salsa2)
   - [YaHS](#yahs)
 
+​     
+
 
 
 
 ## Preprocessing
-
-
 
 ### Juicer
 
@@ -33,6 +35,10 @@ The input file for `3D-DNA` is <merged_nodups.txt>, which is constructed using t
 bash juicer.sh -z <contig.fa> -p <contig.size> -y <restriction.site.file> -s <RE> -d output -D <juicer_dir> -S early 
 
 ```
+
+  
+
+​    
 
 
 

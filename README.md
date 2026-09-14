@@ -3,11 +3,9 @@ This repository primarily contains scripts and computational code used to calcul
 
 Author: Zijie Jiang
 
-Email: [jiangzijie@sjtu.edu.cn](mailto:jiangzijie@sjtu.edu.cn)
+Email: jiangzijie@sjtu.edu.cn
 
-​	 
-
-​	 
+​	  
 
 ## Content
 
@@ -25,7 +23,7 @@ Email: [jiangzijie@sjtu.edu.cn](mailto:jiangzijie@sjtu.edu.cn)
 
 
 
-  
+​	  
 
 ## Hi-C scaffolding index
 
@@ -61,7 +59,7 @@ Nots:
 
 - The `.hic` file is generated from the scaffolding results; please refer to the respective scaffolders' tutorials for more information.
 
-- The `resolution` used in this article were 100kb, 500kb, and 2.5Mb. Higher resolutions require more time to extract the matrix and calculate the Hi-C interaction ratio.  It is recommended to calculate the Hi-C interaction ratio at multiple resolutions (here use 500kb for example). 
+- The `resolution` used in this article were 100kb, 500kb, and 2.5Mb. Higher resolutions require more time to extract the matrix and calculate the Hi-C scaffolding index.  It is recommended to calculate the Hi-C scaffolding index at multiple resolutions (here use 500kb for example). 
 
   ​     
 
@@ -75,7 +73,9 @@ Nots:
 
 - `matrix` from the preceding preprocessing step.
 - `chrom_lengths_file` contains the lengths of each sequence in the scaffolds (format: name /t length).
-- The `bin_size` used in this article were 100kb, 500kb, and 2.5Mb. It is recommended to calculate at multiple resolutions (here use 500kb for example).
+- The `bin_size` used in this article were 100kb, 500kb, and 2.5Mb. It is recommended to calculate at multiple resolutions (here use 500kb for example). 
+
+ 
 
 
 
@@ -93,11 +93,13 @@ Nots:
 
 
 
+​	  
+
 ## Simulation
 
 Details regarding the data simulation can be found in [simulation](https://github.com/Jwindler/Benchmarking-Hi-C-scaffolding-tools/blob/main/1.simulation/simulation.md). 
 
- 	 
+​	  
 
 ## Scaffolding
 
