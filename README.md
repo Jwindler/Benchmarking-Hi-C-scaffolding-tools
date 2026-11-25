@@ -118,9 +118,12 @@ Details regarding the performance evaluation can be found in [evaluation](https:
 **If you used** `Hi-C scaffolding index` **in your research, please cite us:**
 
 ```
+Zijie Jiang, Chaochun Wei, Systematic benchmarking of Hi-C-based scaffolding methods in genome assembly, Briefings in Bioinformatics, Volume 27, Issue 6, November 2026, bbag647, https://doi.org/10.1093/bib/bbag647
 ```
 
-​	 
+
+
+
 
 ## License
 
